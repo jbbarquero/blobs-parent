@@ -28,6 +28,7 @@ privileged aspect DocumentoDataOnDemand_Roo_DataOnDemand {
         setFichero(obj, index);
         setLongitud(obj, index);
         setNombre(obj, index);
+        setOctetos(obj, index);
         setTipoContenido(obj, index);
         setUri(obj, index);
         return obj;
@@ -54,6 +55,11 @@ privileged aspect DocumentoDataOnDemand_Roo_DataOnDemand {
             nombre = nombre.substring(0, 100);
         }
         obj.setNombre(nombre);
+    }
+    
+    public void DocumentoDataOnDemand.setOctetos(Documento obj, int index) {
+        byte[] octetos = String.valueOf(index).getBytes();
+        obj.setOctetos(octetos);
     }
     
     public void DocumentoDataOnDemand.setTipoContenido(Documento obj, int index) {

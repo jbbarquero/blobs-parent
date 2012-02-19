@@ -24,6 +24,7 @@ privileged aspect DocumentDataOnDemand_Roo_DataOnDemand {
     
     public Document DocumentDataOnDemand.getNewTransientDocument(int index) {
         Document obj = new Document();
+        setBytes(obj, index);
         setContentType(obj, index);
         setDescription(obj, index);
         setFilename(obj, index);
@@ -31,6 +32,11 @@ privileged aspect DocumentDataOnDemand_Roo_DataOnDemand {
         setName(obj, index);
         setUri(obj, index);
         return obj;
+    }
+    
+    public void DocumentDataOnDemand.setBytes(Document obj, int index) {
+        byte[] bytes = String.valueOf(index).getBytes();
+        obj.setBytes(bytes);
     }
     
     public void DocumentDataOnDemand.setContentType(Document obj, int index) {

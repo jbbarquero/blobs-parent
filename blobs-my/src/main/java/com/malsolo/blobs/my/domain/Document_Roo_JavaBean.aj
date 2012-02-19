@@ -55,4 +55,12 @@ privileged aspect Document_Roo_JavaBean {
         this.uri = uri;
     }
     
+    public byte[] Document.getBytes() {
+        return this.bytes;
+    }
+    
+    public void Document.setBytes(byte[] bytes) {
+        this.bytes = bytes;
+    }
+    
 }

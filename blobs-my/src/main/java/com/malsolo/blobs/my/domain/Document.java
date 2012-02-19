@@ -1,5 +1,9 @@
 package com.malsolo.blobs.my.domain;
 
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.FetchType;
+import javax.persistence.Lob;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import org.springframework.roo.addon.javabean.RooJavaBean;
@@ -28,4 +32,10 @@ public class Document {
     @NotNull
     @Size(max = 100)
     private String uri;
+
+    @NotNull
+    @Column(name = "bytes")
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    private byte[] bytes;
 }

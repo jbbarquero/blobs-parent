@@ -55,4 +55,12 @@ privileged aspect Documento_Roo_JavaBean {
         this.uri = uri;
     }
     
+    public byte[] Documento.getOctetos() {
+        return this.octetos;
+    }
+    
+    public void Documento.setOctetos(byte[] octetos) {
+        this.octetos = octetos;
+    }
+    
 }
