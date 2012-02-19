@@ -1,0 +1,51 @@
+// PROJECT
+project --topLevelPackage com.malsolo.blobs --projectName blobs-parent --java 5
+// MODULE MySQL
+module create --moduleName blobs-my --topLevelPackage ~.my --java 5 --packaging JAR
+persistence setup --provider HIBERNATE --database MYSQL --databaseName DSNP --userName username --password password --persistenceUnit persistenceUnitMy
+	// DOCUMENT
+	entity jpa --class ~.domain.Document --table T_DOCUMENT --persistenceUnit persistenceUnitMy --testAutomatically 
+	field string --fieldName name --notNull --sizeMax 100
+	field other --fieldName description --type java.lang.String 
+	field string --fieldName filename --notNull 
+	field string --fieldName contentType --notNull 
+	field number --type java.lang.Long --fieldName length
+	field string --fieldName uri --notNull --sizeMax 100
+logging setup --level DEBUG
+// perform eclipse
+// perform tests
+
+// MODULE PostgreSQL
+module focus --moduleName ~
+module create --moduleName blobs-pg --topLevelPackage ~.pg --java 5 --packaging JAR
+persistence setup --provider HIBERNATE --database POSTGRES --databaseName DSNP --userName username --password password --persistenceUnit persistenceUnitPg
+	// DOCUMENTO
+	entity jpa --class ~.domain.Documento --table T_DOCUMENTO --persistenceUnit persistenceUnitPg --testAutomatically 
+	field string --fieldName nombre --notNull --sizeMax 100
+	field other --fieldName descripcion --type java.lang.String 
+	field string --fieldName fichero --notNull 
+	field string --fieldName tipoContenido --notNull 
+	field number --type java.lang.Long --fieldName longitud
+	field string --fieldName uri --notNull --sizeMax 100
+	// NO DOCUMENTO
+	entity jpa --class ~.domain.NoDocumento --table T_NO_DOCUMENTO --persistenceUnit persistenceUnitPg --testAutomatically 
+	field string --fieldName nombre --notNull --sizeMax 100
+	field other --fieldName descripcion --type java.lang.String 
+	field string --fieldName fichero --notNull 
+	field string --fieldName contenido --notNull 
+	field number --type java.lang.Long --fieldName longitud
+	field string --fieldName urli --notNull --sizeMax 100
+logging setup --level DEBUG
+// MODULE Core
+// module focus --moduleName ~
+// module create --moduleName blobs-core --topLevelPackage ~.core --java 5 --packaging JAR
+// service --interface ~.service.DocumentService --entity blobs-my|~.domain.Document
+// service --interface ~.service.DocumentoService --entity blobs-pg|~.domain.Documento
+// service --interface ~.service.NoDocumentoService --entity blobs-pg|~.domain.NoDocumento
+// MODULE Web
+// module focus --moduleName ~
+// module create --moduleName blobs-web --topLevelPackage ~.web --java 5 --packaging WAR
+// web mvc setup
+// web mvc scaffold --class ~.controller.DocumentController --backingType blobs-my|~.domain.Document
+// web mvc scaffold --class ~.controller.DocumentoController --backingType blobs-pg|~.domain.Documento
+// web mvc scaffold --class ~.controller.NoDocumentoController --backingType blobs-pg|~.domain.NoDocumento
