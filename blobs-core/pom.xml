@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.malsolo.blobs</groupId>
-    <artifactId>blobs-parent</artifactId>
-    <packaging>pom</packaging>
+    <groupId>com.malsolo.blobs.core</groupId>
+    <artifactId>blobs-core</artifactId>
+    <packaging>jar</packaging>
     <version>0.1.0.BUILD-SNAPSHOT</version>
-    <name>blobs-parent</name>
+    <name>blobs-core</name>
     <properties>
         <aspectj.version>1.6.12</aspectj.version>
         <java.version>5</java.version>
@@ -14,11 +14,6 @@
         <slf4j.version>1.6.4</slf4j.version>
         <spring.version>3.1.0.RELEASE</spring.version>
     </properties>
-    <modules>
-        <module>blobs-my</module>
-    <module>blobs-pg</module>
-    <module>blobs-core</module>
-    </modules>
     <repositories>
         <repository>
             <id>spring-maven-release</id>
@@ -146,6 +141,16 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-aspects</artifactId>
             <version>${spring.version}</version>
+        </dependency>
+    <dependency>
+            <groupId>com.malsolo.blobs.my</groupId>
+            <artifactId>blobs-my</artifactId>
+            <version>0.1.0.BUILD-SNAPSHOT</version>
+        </dependency>
+    <dependency>
+            <groupId>com.malsolo.blobs.pg</groupId>
+            <artifactId>blobs-pg</artifactId>
+            <version>0.1.0.BUILD-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <build>
